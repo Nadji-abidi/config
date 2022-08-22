@@ -15,20 +15,6 @@
     historyControl = [ "erasedups" "ignoredups" "ignorespace" ];
   };
 
-  # sixv
-  home.file.".config/sxiv/exec/key-handler".text = ''
-  #!/bin/sh
-  while read file
-  do
-          case "$1" in
-          "C-d")
-                   rm "$file";;
-          "C-c")
-                  echo -n "$file" | xclip -selection clipboard ;;
-          esac
-  done
-  '';
-
   # Lf
   programs.lf = {
     previewer.source = pkgs.writeShellScript "pv.sh" ''
@@ -41,11 +27,6 @@
         *) bat "$1";;
     esac
     '';
-    
-    settings = {
-      color256 = true;
-      icons = true;
-    };
   };
     
   # XidleHook
